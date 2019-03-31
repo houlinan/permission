@@ -62,8 +62,6 @@ public class SysUserService {
         sysUserMapper.insertSelective(sysUser) ;
     }
 
-
-
     //验证邮箱是否存在
     public boolean checkEmailExist(String mail , Integer userId){
         return false ;

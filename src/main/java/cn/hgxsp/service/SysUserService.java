@@ -6,6 +6,7 @@ import cn.hgxsp.model.SysUser;
 import cn.hgxsp.param.UserParam;
 import cn.hgxsp.util.BeanValidator;
 import cn.hgxsp.util.LevelUtil;
+import cn.hgxsp.util.PasswordUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -35,7 +36,13 @@ public class SysUserService {
             throw new ParamException("电话已经被占用");
         }
 
-        String password = "123456";
+
+        String password = PasswordUtil.randowPassword();
+
+        //TODO
+        password = "123456";
+
+
         SysUser sysUser = SysUser.builder()
                 .username(userParam.getUsername())
                 .mail(userParam.getMail())

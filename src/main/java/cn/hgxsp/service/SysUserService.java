@@ -6,7 +6,9 @@ import cn.hgxsp.model.SysUser;
 import cn.hgxsp.param.UserParam;
 import cn.hgxsp.util.BeanValidator;
 import cn.hgxsp.util.LevelUtil;
+import cn.hgxsp.util.MD5Util;
 import cn.hgxsp.util.PasswordUtil;
+import com.google.common.base.Preconditions;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -42,12 +44,14 @@ public class SysUserService {
         //TODO
         password = "123456";
 
+        String encryptedPassword = MD5Util.encrypt(password) ;
+
 
         SysUser sysUser = SysUser.builder()
                 .username(userParam.getUsername())
                 .mail(userParam.getMail())
                 .deptId(userParam.getDeptId())
-                .password(password)
+                .password(encryptedPassword)
                 .telephone(userParam.getTelephone())
                 .status(userParam.getStatus())
                 .remark(userParam.getRemark())
@@ -61,6 +65,39 @@ public class SysUserService {
 
         sysUserMapper.insertSelective(sysUser) ;
     }
+
+    public void update(UserParam userParam){
+
+        BeanValidator.check(userParam);
+        if(checkEmailExist(userParam.getMail(), userParam.getId())){
+            throw new ParamException("邮箱已经被占用");
+        }
+
+        if(checkTelPhoneExist(userParam.getTelephone(), userParam.getId())){
+            throw new ParamException("电话已经被占用");
+        }
+
+        SysUser beforeUser = sysUserMapper.selectByPrimaryKey(userParam.getId());
+        Preconditions.checkNotNull(beforeUser, "待更新用户不存在");
+
+        SysUser afterUser =   SysUser.builder()
+                .id(userParam.getId())
+                .username(userParam.getUsername())
+                .mail(userParam.getMail())
+                .deptId(userParam.getDeptId())
+                .telephone(userParam.getTelephone())
+                .status(userParam.getStatus())
+                .remark(userParam.getRemark())
+                .build();
+
+        sysUserMapper.updateByPrimaryKeySelective(afterUser) ;
+    }
+
+
+    public SysUser findByKeyWord(String key){
+        return null ;
+    }
+
 
     //验证邮箱是否存在
     public boolean checkEmailExist(String mail , Integer userId){

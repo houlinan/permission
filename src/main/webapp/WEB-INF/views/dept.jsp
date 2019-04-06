@@ -107,45 +107,45 @@
         </table>
     </form>
 </div>
-<%--<div id="dialog-user-form" style="display: none;">--%>
-    <%--<form id="userForm">--%>
-        <%--<table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">--%>
-            <%--<tr>--%>
-                <%--<td style="width: 80px;"><label for="parentId">所在部门</label></td>--%>
-                <%--<td>--%>
-                    <%--<select id="deptSelectId" name="deptId" data-placeholder="选择部门" style="width: 200px;"></select>--%>
-                <%--</td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td><label for="userName">名称</label></td>--%>
-                <%--<input type="hidden" name="id" id="userId"/>--%>
-                <%--<td><input type="text" name="username" id="userName" value="" class="text ui-widget-content ui-corner-all"></td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td><label for="userMail">邮箱</label></td>--%>
-                <%--<td><input type="text" name="mail" id="userMail" value="" class="text ui-widget-content ui-corner-all"></td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td><label for="userTelephone">电话</label></td>--%>
-                <%--<td><input type="text" name="telephone" id="userTelephone" value="" class="text ui-widget-content ui-corner-all"></td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td><label for="userStatus">状态</label></td>--%>
-                <%--<td>--%>
-                    <%--<select id="userStatus" name="status" data-placeholder="选择状态" style="width: 150px;">--%>
-                        <%--<option value="1">有效</option>--%>
-                        <%--<option value="0">无效</option>--%>
-                        <%--<option value="2">删除</option>--%>
-                    <%--</select>--%>
-                <%--</td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-                <%--<td><label for="userRemark">备注</label></td>--%>
-                <%--<td><textarea name="remark" id="userRemark" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>--%>
-            <%--</tr>--%>
-        <%--</table>--%>
-    <%--</form>--%>
-<%--</div>--%>
+<div id="dialog-user-form" style="display: none;">
+    <form id="userForm">
+        <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+            <tr>
+                <td style="width: 80px;"><label for="parentId">所在部门</label></td>
+                <td>
+                    <select id="deptSelectId" name="deptId" data-placeholder="选择部门" style="width: 200px;"></select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="userName">名称</label></td>
+                <input type="hidden" name="id" id="userId"/>
+                <td><input type="text" name="username" id="userName" value="" class="text ui-widget-content ui-corner-all"></td>
+            </tr>
+            <tr>
+                <td><label for="userMail">邮箱</label></td>
+                <td><input type="text" name="mail" id="userMail" value="" class="text ui-widget-content ui-corner-all"></td>
+            </tr>
+            <tr>
+                <td><label for="userTelephone">电话</label></td>
+                <td><input type="text" name="telephone" id="userTelephone" value="" class="text ui-widget-content ui-corner-all"></td>
+            </tr>
+            <tr>
+                <td><label for="userStatus">状态</label></td>
+                <td>
+                    <select id="userStatus" name="status" data-placeholder="选择状态" style="width: 150px;">
+                        <option value="1">有效</option>
+                        <option value="0">无效</option>
+                        <option value="2">删除</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="userRemark">备注</label></td>
+                <td><textarea name="remark" id="userRemark" class="text ui-widget-content ui-corner-all" rows="3" cols="25"></textarea></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 <script id="deptListTemplate" type="x-tmpl-mustache">
 <ol class="dd-list">
@@ -167,41 +167,41 @@
     {{/deptList}}
 </ol>
 </script>
-<%--<script id="userListTemplate" type="x-tmpl-mustache">--%>
-<%--{{#userList}}--%>
-<%--<tr role="row" class="user-name odd" data-id="{{id}}"><!--even -->--%>
-    <%--<td><a href="#" class="user-edit" data-id="{{id}}">{{username}}</a></td>--%>
-    <%--<td>{{showDeptName}}</td>--%>
-    <%--<td>{{mail}}</td>--%>
-    <%--<td>{{telephone}}</td>--%>
-    <%--<td>{{#bold}}{{showStatus}}{{/bold}}</td> <!-- 此处套用函数对status做特殊处理 -->--%>
-    <%--<td>--%>
-        <%--<div class="hidden-sm hidden-xs action-buttons">--%>
-            <%--<a class="green user-edit" href="#" data-id="{{id}}">--%>
-                <%--<i class="ace-icon fa fa-pencil bigger-100"></i>--%>
-            <%--</a>--%>
-            <%--<a class="red user-acl" href="#" data-id="{{id}}">--%>
-                <%--<i class="ace-icon fa fa-flag bigger-100"></i>--%>
-            <%--</a>--%>
-        <%--</div>--%>
-    <%--</td>--%>
-<%--</tr>--%>
-<%--{{/userList}}--%>
-<%--</script>--%>
+<script id="userListTemplate" type="x-tmpl-mustache">
+{{#userList}}
+<tr role="row" class="user-name odd" data-id="{{id}}"><!--even -->
+    <td><a href="#" class="user-edit" data-id="{{id}}">{{username}}</a></td>
+    <td>{{showDeptName}}</td>
+    <td>{{mail}}</td>
+    <td>{{telephone}}</td>
+    <td>{{#bold}}{{showStatus}}{{/bold}}</td> <!-- 此处套用函数对status做特殊处理 -->
+    <td>
+        <div class="hidden-sm hidden-xs action-buttons">
+            <a class="green user-edit" href="#" data-id="{{id}}">
+                <i class="ace-icon fa fa-pencil bigger-100"></i>
+            </a>
+            <a class="red user-acl" href="#" data-id="{{id}}">
+                <i class="ace-icon fa fa-flag bigger-100"></i>
+            </a>
+        </div>
+    </td>
+</tr>
+{{/userList}}
+</script>
 
 <script type="application/javascript">
     $(function() {
 
         var deptList; // 存储树形部门列表
         var deptMap = {}; // 存储map格式的部门信息
-        <%--var userMap = {}; // 存储map格式的用户信息--%>
+        var userMap = {}; // 存储map格式的用户信息
         var optionStr = "";
         var lastClickDeptId = -1;
 
         var deptListTemplate = $('#deptListTemplate').html();
         Mustache.parse(deptListTemplate);
-        <%--var userListTemplate = $('#userListTemplate').html();--%>
-        <%--Mustache.parse(userListTemplate);--%>
+        var userListTemplate = $('#userListTemplate').html();
+        Mustache.parse(userListTemplate);
 
         loadDeptTree();
 
@@ -326,149 +326,149 @@
 
         function loadUserList(deptId) {
 
-            <%--var pageSize = $("#pageSize").val();--%>
-            <%--var url = "/sys/user/page.json?deptId=" + deptId;--%>
-            <%--var pageNo = $("#userPage .pageNo").val() || 1;--%>
-            <%--$.ajax({--%>
-                <%--url : url,--%>
-                <%--data: {--%>
-                    <%--pageSize: pageSize,--%>
-                    <%--pageNo: pageNo--%>
-                <%--},--%>
-                <%--success: function (result) {--%>
-                    <%--renderUserListAndPage(result, url);--%>
-                <%--}--%>
-            <%--})--%>
+            var pageSize = $("#pageSize").val();
+            var url = "/sys/user/page.json?deptId=" + deptId;
+            var pageNo = $("#userPage .pageNo").val() || 1;
+            $.ajax({
+                url : url,
+                data: {
+                    pageSize: pageSize,
+                    pageNo: pageNo
+                },
+                success: function (result) {
+                    renderUserListAndPage(result, url);
+                }
+            })
         }
 
-        <%--function renderUserListAndPage(result, url) {--%>
-            <%--if (result.ret) {--%>
-                <%--if (result.data.total > 0){--%>
-                    <%--var rendered = Mustache.render(userListTemplate, {--%>
-                        <%--userList: result.data.data,--%>
-                        <%--"showDeptName": function() {--%>
-                            <%--return deptMap[this.deptId].name;--%>
-                        <%--},--%>
-                        <%--"showStatus": function() {--%>
-                            <%--return this.status == 1 ? '有效' : (this.status == 0 ? '无效' : '删除');--%>
-                        <%--},--%>
-                        <%--"bold": function() {--%>
-                            <%--return function(text, render) {--%>
-                                <%--var status = render(text);--%>
-                                <%--if (status == '有效') {--%>
-                                    <%--return "<span class='label label-sm label-success'>有效</span>";--%>
-                                <%--} else if(status == '无效') {--%>
-                                    <%--return "<span class='label label-sm label-warning'>无效</span>";--%>
-                                <%--} else {--%>
-                                    <%--return "<span class='label'>删除</span>";--%>
-                                <%--}--%>
-                            <%--}--%>
-                        <%--}--%>
-                    <%--});--%>
-                    <%--$("#userList").html(rendered);--%>
-                    <%--bindUserClick();--%>
-                    <%--$.each(result.data.data, function(i, user) {--%>
-                        <%--userMap[user.id] = user;--%>
-                    <%--})--%>
-                <%--} else {--%>
-                    <%--$("#userList").html('');--%>
-                <%--}--%>
-                <%--var pageSize = $("#pageSize").val();--%>
-                <%--var pageNo = $("#userPage .pageNo").val() || 1;--%>
-                <%--renderPage(url, result.data.total, pageNo, pageSize, result.data.total > 0 ? result.data.data.length : 0, "userPage", renderUserListAndPage);--%>
-            <%--} else {--%>
-                <%--showMessage("获取部门下用户列表", result.msg, false);--%>
-            <%--}--%>
-        <%--}--%>
+        function renderUserListAndPage(result, url) {
+            if (result.ret) {
+                if (result.data.total > 0){
+                    var rendered = Mustache.render(userListTemplate, {
+                        userList: result.data.data,
+                        "showDeptName": function() {
+                            return deptMap[this.deptId].name;
+                        },
+                        "showStatus": function() {
+                            return this.status == 1 ? '有效' : (this.status == 0 ? '无效' : '删除');
+                        },
+                        "bold": function() {
+                            return function(text, render) {
+                                var status = render(text);
+                                if (status == '有效') {
+                                    return "<span class='label label-sm label-success'>有效</span>";
+                                } else if(status == '无效') {
+                                    return "<span class='label label-sm label-warning'>无效</span>";
+                                } else {
+                                    return "<span class='label'>删除</span>";
+                                }
+                            }
+                        }
+                    });
+                    $("#userList").html(rendered);
+                    bindUserClick();
+                    $.each(result.data.data, function(i, user) {
+                        userMap[user.id] = user;
+                    })
+                } else {
+                    $("#userList").html('');
+                }
+                var pageSize = $("#pageSize").val();
+                var pageNo = $("#userPage .pageNo").val() || 1;
+                renderPage(url, result.data.total, pageNo, pageSize, result.data.total > 0 ? result.data.data.length : 0, "userPage", renderUserListAndPage);
+            } else {
+                showMessage("获取部门下用户列表", result.msg, false);
+            }
+        }
 
-        <%--$(".user-add").click(function() {--%>
-            <%--$("#dialog-user-form").dialog({--%>
-                <%--model: true,--%>
-                <%--title: "新增用户",--%>
-                <%--open: function(event, ui) {--%>
-                    <%--$(".ui-dialog-titlebar-close", $(this).parent()).hide();--%>
-                    <%--optionStr = "";--%>
-                    <%--recursiveRenderDeptSelect(deptList, 1);--%>
-                    <%--$("#userForm")[0].reset();--%>
-                    <%--$("#deptSelectId").html(optionStr);--%>
-                <%--},--%>
-                <%--buttons : {--%>
-                    <%--"添加": function(e) {--%>
-                        <%--e.preventDefault();--%>
-                        <%--updateUser(true, function (data) {--%>
-                            <%--$("#dialog-user-form").dialog("close");--%>
-                            <%--loadUserList(lastClickDeptId);--%>
-                        <%--}, function (data) {--%>
-                            <%--showMessage("新增用户", data.msg, false);--%>
-                        <%--})--%>
-                    <%--},--%>
-                    <%--"取消": function () {--%>
-                        <%--$("#dialog-user-form").dialog("close");--%>
-                    <%--}--%>
-                <%--}--%>
-            <%--});--%>
-        <%--});--%>
-        <%--function bindUserClick() {--%>
-            <%--$(".user-acl").click(function (e) {--%>
-                <%--e.preventDefault();--%>
-                <%--e.stopPropagation();--%>
-                <%--var userId = $(this).attr("data-id");--%>
-                <%--$.ajax({--%>
-                    <%--url: "/sys/user/acls.json",--%>
-                    <%--data: {--%>
-                        <%--userId: userId--%>
-                    <%--},--%>
-                    <%--success: function(result) {--%>
-                        <%--if (result.ret) {--%>
-                            <%--console.log(result)--%>
-                        <%--} else {--%>
-                            <%--showMessage("获取用户权限数据", result.msg, false);--%>
-                        <%--}--%>
-                    <%--}--%>
-                <%--})--%>
-            <%--});--%>
-            <%--$(".user-edit").click(function(e) {--%>
-                <%--e.preventDefault();--%>
-                <%--e.stopPropagation();--%>
-                <%--var userId = $(this).attr("data-id");--%>
-                <%--$("#dialog-user-form").dialog({--%>
-                    <%--model: true,--%>
-                    <%--title: "编辑用户",--%>
-                    <%--open: function(event, ui) {--%>
-                        <%--$(".ui-dialog-titlebar-close", $(this).parent()).hide();--%>
-                        <%--optionStr = "";--%>
-                        <%--recursiveRenderDeptSelect(deptList, 1);--%>
-                        <%--$("#userForm")[0].reset();--%>
-                        <%--$("#deptSelectId").html(optionStr);--%>
+        $(".user-add").click(function() {
+            $("#dialog-user-form").dialog({
+                model: true,
+                title: "新增用户",
+                open: function(event, ui) {
+                    $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+                    optionStr = "";
+                    recursiveRenderDeptSelect(deptList, 1);
+                    $("#userForm")[0].reset();
+                    $("#deptSelectId").html(optionStr);
+                },
+                buttons : {
+                    "添加": function(e) {
+                        e.preventDefault();
+                        updateUser(true, function (data) {
+                            $("#dialog-user-form").dialog("close");
+                            loadUserList(lastClickDeptId);
+                        }, function (data) {
+                            showMessage("新增用户", data.msg, false);
+                        })
+                    },
+                    "取消": function () {
+                        $("#dialog-user-form").dialog("close");
+                    }
+                }
+            });
+        });
+        function bindUserClick() {
+            $(".user-acl").click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var userId = $(this).attr("data-id");
+                $.ajax({
+                    url: "/sys/user/acls.json",
+                    data: {
+                        userId: userId
+                    },
+                    success: function(result) {
+                        if (result.ret) {
+                            console.log(result)
+                        } else {
+                            showMessage("获取用户权限数据", result.msg, false);
+                        }
+                    }
+                })
+            });
+            $(".user-edit").click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var userId = $(this).attr("data-id");
+                $("#dialog-user-form").dialog({
+                    model: true,
+                    title: "编辑用户",
+                    open: function(event, ui) {
+                        $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+                        optionStr = "";
+                        recursiveRenderDeptSelect(deptList, 1);
+                        $("#userForm")[0].reset();
+                        $("#deptSelectId").html(optionStr);
 
-                        <%--var targetUser = userMap[userId];--%>
-                        <%--if (targetUser) {--%>
-                            <%--$("#deptSelectId").val(targetUser.deptId);--%>
-                            <%--$("#userName").val(targetUser.username);--%>
-                            <%--$("#userMail").val(targetUser.mail);--%>
-                            <%--$("#userTelephone").val(targetUser.telephone);--%>
-                            <%--$("#userStatus").val(targetUser.status);--%>
-                            <%--$("#userRemark").val(targetUser.remark);--%>
-                            <%--$("#userId").val(targetUser.id);--%>
-                        <%--}--%>
-                    <%--},--%>
-                    <%--buttons : {--%>
-                        <%--"更新": function(e) {--%>
-                            <%--e.preventDefault();--%>
-                            <%--updateUser(false, function (data) {--%>
-                                <%--$("#dialog-user-form").dialog("close");--%>
-                                <%--loadUserList(lastClickDeptId);--%>
-                            <%--}, function (data) {--%>
-                                <%--showMessage("更新用户", data.msg, false);--%>
-                            <%--})--%>
-                        <%--},--%>
-                        <%--"取消": function () {--%>
-                            <%--$("#dialog-user-form").dialog("close");--%>
-                        <%--}--%>
-                    <%--}--%>
-                <%--});--%>
-            <%--});--%>
-        <%--}--%>
+                        var targetUser = userMap[userId];
+                        if (targetUser) {
+                            $("#deptSelectId").val(targetUser.deptId);
+                            $("#userName").val(targetUser.username);
+                            $("#userMail").val(targetUser.mail);
+                            $("#userTelephone").val(targetUser.telephone);
+                            $("#userStatus").val(targetUser.status);
+                            $("#userRemark").val(targetUser.remark);
+                            $("#userId").val(targetUser.id);
+                        }
+                    },
+                    buttons : {
+                        "更新": function(e) {
+                            e.preventDefault();
+                            updateUser(false, function (data) {
+                                $("#dialog-user-form").dialog("close");
+                                loadUserList(lastClickDeptId);
+                            }, function (data) {
+                                showMessage("更新用户", data.msg, false);
+                            })
+                        },
+                        "取消": function () {
+                            $("#dialog-user-form").dialog("close");
+                        }
+                    }
+                });
+            });
+        }
 
         $(".dept-add").click(function() {
             $("#dialog-dept-form").dialog({
@@ -517,25 +517,25 @@
             }
         }
 
-        <%--function updateUser(isCreate, successCallback, failCallback) {--%>
-            <%--$.ajax({--%>
-                <%--url: isCreate ? "/sys/user/save.json" : "/sys/user/update.json",--%>
-                <%--data: $("#userForm").serializeArray(),--%>
-                <%--type: 'POST',--%>
-                <%--success: function(result) {--%>
-                    <%--if (result.ret) {--%>
-                        <%--loadDeptTree();--%>
-                        <%--if (successCallback) {--%>
-                            <%--successCallback(result);--%>
-                        <%--}--%>
-                    <%--} else {--%>
-                        <%--if (failCallback) {--%>
-                            <%--failCallback(result);--%>
-                        <%--}--%>
-                    <%--}--%>
-                <%--}--%>
-            <%--})--%>
-        <%--}--%>
+        function updateUser(isCreate, successCallback, failCallback) {
+            $.ajax({
+                url: isCreate ? "/sys/user/save.json" : "/sys/user/update.json",
+                data: $("#userForm").serializeArray(),
+                type: 'POST',
+                success: function(result) {
+                    if (result.ret) {
+                        loadDeptTree();
+                        if (successCallback) {
+                            successCallback(result);
+                        }
+                    } else {
+                        if (failCallback) {
+                            failCallback(result);
+                        }
+                    }
+                }
+            })
+        }
 
         function updateDept(isCreate, successCallback, failCallback) {
             $.ajax({

@@ -4,6 +4,7 @@ import cn.hgxsp.model.SysUser;
 import cn.hgxsp.service.SysUserService;
 import cn.hgxsp.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,7 +20,7 @@ import java.io.IOException;
  * CREATED DATE ：2019/4/1
  * Time : 19:59
  */
-@RequestMapping("/user")
+@Controller
 public class UserController {
 
     public final static String USER_SESSION_KEY = "user";
@@ -66,6 +67,13 @@ public class UserController {
         }
         String path = "signin.jsp";
         req.getRequestDispatcher(path).forward(req,res);
+    }
+
+    @RequestMapping("/logout.page")
+    public void logout(HttpServletRequest req , HttpServletResponse res)throws IOException , ServletException{
+        req.getSession().removeAttribute(USER_SESSION_KEY);
+        String path = "signin.jsp";
+        res.sendRedirect(path);
     }
 
 

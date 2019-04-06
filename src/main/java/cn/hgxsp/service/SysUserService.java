@@ -1,5 +1,7 @@
 package cn.hgxsp.service;
 
+import cn.hgxsp.beans.PageQuery;
+import cn.hgxsp.beans.PageResult;
 import cn.hgxsp.dao.SysUserMapper;
 import cn.hgxsp.exception.ParamException;
 import cn.hgxsp.model.SysUser;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.xml.bind.ValidationException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * DESC：用户service类
@@ -95,19 +98,28 @@ public class SysUserService {
 
 
     public SysUser findByKeyWord(String key){
-        return null ;
+        return sysUserMapper.findByKeyWord(key)  ;
     }
 
 
     //验证邮箱是否存在
-    public boolean checkEmailExist(String mail , Integer userId){
-        return false ;
-    }
+    public boolean checkEmailExist(String mail , Integer id){
+        return sysUserMapper.countByMail(mail ,id) > 0 ;
+}
 
     //验证邮箱是否存在
-    public boolean checkTelPhoneExist(String telPhone , Integer userId){
-        return false ;
+    public boolean checkTelPhoneExist(String telPhone , Integer id){
+
+        return sysUserMapper.countByTelephone(telPhone , id) > 0 ;
     }
 
-
+    public PageResult<SysUser> getPageByDeptId(int deptId , PageQuery pageQuery){
+        BeanValidator.check(pageQuery);
+        int count = sysUserMapper.countByDeptId(deptId) ;
+        if(count > 0 ){
+            List<SysUser> pageByDeptId = sysUserMapper.getPageByDeptId(deptId, pageQuery);
+            return PageResult.<SysUser>builder().total(count).data(pageByDeptId).build() ;
+        }
+        return PageResult.<SysUser>builder().build() ;
+    }
 }

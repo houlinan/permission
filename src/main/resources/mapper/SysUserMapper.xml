@@ -178,6 +178,15 @@
     </if>
   </select>
 
+  <select id="countByTelephone" parameterType="map" resultType="java.lang.Integer">
+    SELECT COUNT(1)
+    FROM sys_user
+    WHERE telephone = #{telephone}
+    <if test="id != null">
+      AND id != #{id}
+    </if>
+  </select>
+
   <select id="countByDeptId" parameterType="map" resultType="java.lang.Integer">
     SELECT COUNT(1)
     FROM sys_user

@@ -2,14 +2,12 @@ package cn.hgxsp.service;
 
 import cn.hgxsp.beans.PageQuery;
 import cn.hgxsp.beans.PageResult;
+import cn.hgxsp.common.RequestHolder;
 import cn.hgxsp.dao.SysUserMapper;
 import cn.hgxsp.exception.ParamException;
 import cn.hgxsp.model.SysUser;
 import cn.hgxsp.param.UserParam;
-import cn.hgxsp.util.BeanValidator;
-import cn.hgxsp.util.LevelUtil;
-import cn.hgxsp.util.MD5Util;
-import cn.hgxsp.util.PasswordUtil;
+import cn.hgxsp.util.*;
 import com.google.common.base.Preconditions;
 import org.springframework.stereotype.Service;
 
@@ -60,8 +58,8 @@ public class SysUserService {
                 .remark(userParam.getRemark())
                 .build();
 
-        sysUser.setOperator("system");//TODO
-        sysUser.setOperateIp("127.0.0.1");//TODO
+        sysUser.setOperator(RequestHolder.getCurrentUser().getUsername());
+        sysUser.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         sysUser.setOperateTime(new Date());
 
         //TODO 发送Email
@@ -92,6 +90,11 @@ public class SysUserService {
                 .status(userParam.getStatus())
                 .remark(userParam.getRemark())
                 .build();
+
+
+        afterUser.setOperator(RequestHolder.getCurrentUser().getUsername());
+        afterUser.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
+        afterUser.setOperateTime(new Date());
 
         sysUserMapper.updateByPrimaryKeySelective(afterUser) ;
     }

@@ -1,11 +1,13 @@
 package cn.hgxsp.service;
 
+import cn.hgxsp.common.RequestHolder;
 import cn.hgxsp.dao.SysDeptMapper;
 import cn.hgxsp.exception.HgxspException;
 import cn.hgxsp.exception.ParamException;
 import cn.hgxsp.model.SysDept;
 import cn.hgxsp.param.DeptParam;
 import cn.hgxsp.util.BeanValidator;
+import cn.hgxsp.util.IpUtil;
 import cn.hgxsp.util.LevelUtil;
 import com.google.common.base.Preconditions;
 import org.apache.commons.collections.CollectionUtils;
@@ -41,8 +43,8 @@ public class DeptServcice {
                 .remark(deptParam.getRemark()).build() ;
 
         sysDept.setLevel(LevelUtil.calculateLevel(getLevel(deptParam.getParentId())  , deptParam.getParentId()));
-        sysDept.setOperator("system");//TODO
-        sysDept.setOperateIp("127.0.0.1");//TODO
+        sysDept.setOperator(RequestHolder.getCurrentUser().getUsername());
+        sysDept.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         sysDept.setOperateTime(new Date());
         //insertSelective 这里只插入有值的值，而OBject.insert是插入所有值
         sysDeptMapper.insertSelective(sysDept) ;
@@ -68,8 +70,8 @@ public class DeptServcice {
                 .remark(deptParam.getRemark()).build() ;
 
         afterDept.setLevel(LevelUtil.calculateLevel(getLevel(deptParam.getParentId()), deptParam.getParentId()));
-        afterDept.setOperator("system");//TODO
-        afterDept.setOperateIp("127.0.0.1");//TODO
+        afterDept.setOperator(RequestHolder.getCurrentUser().getUsername());
+        afterDept.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         afterDept.setOperateTime(new Date());
 
         //更新部门和子部门

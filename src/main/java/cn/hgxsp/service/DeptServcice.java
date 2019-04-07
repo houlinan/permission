@@ -111,8 +111,8 @@ public class DeptServcice {
         return sysDeptMapper.countByNameAndParentId (parentId,deptName ,  deptId) > 0 ;
     }
 
-    private String getLevel(Integer deptid){
-        SysDept dept = sysDeptMapper.selectByPrimaryKey(deptid);
+    private String getLevel(Integer deptId){
+        SysDept dept = sysDeptMapper.selectByPrimaryKey(deptId);
         if(dept == null ) {
             return null ;
         }

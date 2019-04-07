@@ -1,7 +1,10 @@
 package cn.hgxsp.service;
 
+import cn.hgxsp.dao.SysAclModuleMapper;
 import cn.hgxsp.dao.SysDeptMapper;
+import cn.hgxsp.dto.AclModuleLevelDto;
 import cn.hgxsp.dto.DeptLevelDto;
+import cn.hgxsp.model.SysAclModule;
 import cn.hgxsp.model.SysDept;
 import cn.hgxsp.util.LevelUtil;
 import com.google.common.collect.ArrayListMultimap;
@@ -9,6 +12,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import java.util.Collections;
@@ -26,6 +30,18 @@ public class SysTreeService {
 
     @Resource
     private SysDeptMapper sysDeptMapper ;
+
+    @Resource
+    private SysAclModuleMapper sysAclModuleMapper ;
+
+
+    public List<AclModuleLevelDto> aclModuleTree(){
+        List<SysAclModule> allAclModule = sysAclModuleMapper.getAllAclModule();
+        List<AclModuleLevelDto> dtoList = Lists.newArrayList() ;
+        for(){
+
+        }
+    }
 
 
     public List<DeptLevelDto> deptTree(){

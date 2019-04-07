@@ -149,4 +149,44 @@
       operate_ip = #{operateIp,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
+  <!--获取所有权限模块集合-->
+  <select id="getAllAclModule" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_acl_module
+  </select>
+
+  <!--获取当前权限模块的所有子模块-->
+  <select id="getChildAclModuleListByLevel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_acl_module
+    where level like #{level} || '.%'
+  </select>
+
+  <update id="batchUpdateLevel" parameterType="map">
+    <foreach collection="needToUpdateSysAclModules"  item="sysAclModule" separator=";" >
+      UPDATE sys_acl_module
+      SET LEVEL = #{sysAclModule.level}
+      WHERE id = #{sysAclModule.id}
+    </foreach>
+  </update>
+
+  <select id="countByNameAndParentId" parameterType="map" resultType="int">
+    SELECT COUNT(1)
+    FROM sys_acl_module
+    WHERE name = #{aclModuleName}
+    <if test = "parentId != null ">
+      AND parent_id = #{parentId}
+    </if>
+    <if test="parentId == null " >
+      AND parent_id =  0
+    </if>
+    <if test="id != null " >
+      AND id != #{id}
+    </if>
+  </select>
 </mapper>

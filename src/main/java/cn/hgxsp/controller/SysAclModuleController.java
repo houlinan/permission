@@ -1,12 +1,15 @@
 package cn.hgxsp.controller;
 
+import cn.hgxsp.beans.PageQuery;
 import cn.hgxsp.common.JsonData;
 import cn.hgxsp.param.AclModuleParam;
 import cn.hgxsp.param.DeptParam;
 import cn.hgxsp.service.SysAclModuleService;
+import cn.hgxsp.service.SysTreeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +28,9 @@ public class SysAclModuleController {
 
     @Resource
     SysAclModuleService sysAclModuleService ;
+
+    @Resource
+    SysTreeService sysTreeService ;
 
     @RequestMapping("/acl.page")
     public ModelAndView page(){
@@ -47,14 +53,21 @@ public class SysAclModuleController {
         sysAclModuleService.update(aclModuleParam);
 
         return JsonData.success() ;
+
     }
 
     @RequestMapping("/tree.json")
     @ResponseBody
     public JsonData tree(){
 
-        return JsonData.success() ;
+        return JsonData.success(sysTreeService.aclModuleTree()) ;
     }
 
+
+    @RequestMapping("/page.json")
+    @ResponseBody
+    public JsonData list(@RequestParam("aclModuleId")Integer aclModuleId , PageQuery pageQuery){
+        return JsonData.success() ;
+    }
 
 }

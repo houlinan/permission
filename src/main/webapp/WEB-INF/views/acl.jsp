@@ -465,7 +465,7 @@
 
         function loadAclList(aclModuleId) {
             var pageSize = $("#pageSize").val();
-            var url = "/sys/acl/page.json?aclModuleId=" + aclModuleId;
+            var url = "/sys/aclModuleId/page.json?aclModuleId=" + aclModuleId;
             var pageNo = $("#aclPage .pageNo").val() || 1;
             $.ajax({
                 url : url,

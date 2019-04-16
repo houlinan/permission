@@ -170,7 +170,7 @@ public class ExTVTitleController {
             cellx_5.setCellStyle(cell1Sytle);
 
             lastRowNum++ ;
-            System.out.println(lastRowNum + ";" +allDto.size() );
+//            System.out.println(lastRowNum + ";" +allDto.size() );
         }
         lastRowNum++;
         String yuboshichang = "00:00：18"; // TODO

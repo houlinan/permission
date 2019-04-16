@@ -62,6 +62,9 @@ public class SysTreeService {
             }
         }
         Collections.sort(rootAclModuleList, aclModuleLevelDtoComparator);
+
+        //进行递归排序
+        transformAclModuleTree(aclModuleLevelDtos, LevelUtil.ROOT, levelAclModuleMap);
         return rootAclModuleList;
     }
 

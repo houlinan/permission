@@ -2,7 +2,11 @@ package cn.hgxsp.controller;
 
 import cn.hgxsp.model.SysUser;
 import cn.hgxsp.service.SysUserService;
+import cn.hgxsp.util.JsonMapper;
 import cn.hgxsp.util.MD5Util;
+import com.github.dadiyang.equator.Equator;
+import com.github.dadiyang.equator.FieldInfo;
+import com.github.dadiyang.equator.GetterBaseEquator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
@@ -13,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * DESC：用户相关controller
@@ -76,5 +81,14 @@ public class UserController {
         res.sendRedirect(path);
     }
 
+    public static void main(String[] args) {
+        SysUser user1 = SysUser.builder()
+                .username("name1").mail("houlinan1").build();
+        SysUser user2 = SysUser.builder()
+                .username("name2").mail("houlinan").build();
 
+        Equator equator = new GetterBaseEquator();
+        List<FieldInfo> diffFields = equator.getDiffFields(user1, user2);
+        System.out.println(JsonMapper.obj2String(diffFields));
+    }
 }

@@ -75,7 +75,6 @@ public class SysAclService {
         after.setOperateTime(new Date());
 
         sysAclMapper.updateByPrimaryKeySelective(after) ;
-
     }
 
     public boolean checkExist(int aclModuleId , String name , Integer id ) {
@@ -87,11 +86,9 @@ public class SysAclService {
         int count = sysAclMapper.countByAclModuleid(aclModuleId) ;
         if(count > 0 ){
             List<SysAcl> result = sysAclMapper.getPageByAclModuleId(aclModuleId, pageQuery);
-            return PageResult.builder().data(result).total(count).build();
+            return PageResult.<SysAcl>builder().data(result).total(count).build();
         }
         return PageResult.<SysAcl>builder().build();
     }
-
-
 
 }

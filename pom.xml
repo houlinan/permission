@@ -178,6 +178,13 @@
       <artifactId>poi</artifactId>
       <version>4.1.0</version>
     </dependency>
+
+    <!--属性对比器-->
+    <dependency>
+      <groupId>com.github.dadiyang</groupId>
+      <artifactId>equator</artifactId>
+      <version>1.0.1</version>
+    </dependency>
   </dependencies>
 
   <build>

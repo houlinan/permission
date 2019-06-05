@@ -24,5 +24,4 @@ public class PageResult<T> {
 
     private int total ;
 
-
 }

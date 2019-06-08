@@ -80,6 +80,19 @@ public class DeptServcice {
     }
 
     @Transactional
+    /**
+     *DESC:
+     *@author hou.linan
+     *@date:  2019/6/6 15:02
+     *@param:  startup failed:
+    Script1.groovy: 1: expecting ')', found ':' @ line 1, column 229.
+       < params.size() - 1) ? '' : '':'')}}; re
+                                     ^
+
+    1 error
+
+     *@return:  void
+    */
     public void updateWithChild(SysDept before , SysDept after){
 
         String newLevelPrefix = after.getLevel() ;
